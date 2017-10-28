@@ -1,0 +1,39 @@
+.button-style {
+    background-color: black;
+    height: 60px;
+    color: cyan;
+}
+.hidden {
+    display: hidden;
+}
+.padding-bottom {
+    padding-bottom: 30px;
+}
+h1 {
+    font-size: 50px;
+    color: red;
+    text-align: center;
+    font-family: impact;
+    border: 1px solid black;
+    outline-style: groove;
+    outline-color: maroon;
+    background: tan;
+}
+p {
+    font-size: 14px;
+    text-align: center;
+    color: black;
+}
+p.impact {
+    font-family: "Impact", Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
+}
+h2 { 
+    font-size: 25px;
+    color: maroon;
+    font-family: impact;
+    text-align: left;
+    margin-left: 40px;
+}
+body{
+    background-color: rgb(245, 227, 204);
+}
