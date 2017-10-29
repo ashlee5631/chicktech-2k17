@@ -30,14 +30,14 @@
             game.load.spritesheet('hp', 'assets/bowser_rpg_maker_mv_by_retrospriteresources-dass1dx.png', 85, 85.99);
             game.load.image('coin', 'assets/c3d18570de89dd0.png');
             game.load.image('mushroom', 'assets/MegamushroomNSMB2.png');
-            game.load.image('title', 'assets/Game Title on Game Screen.png');
+            //game.load.image('title', 'assets/Game Title on Game Screen.png');
         }
         //Create sets up your game for you - most of your code will probably be here!
         function create() {
 
             //add the sky
             game.add.sprite(0, 0, 'sky');
-            game.add.sprite(0, 642, 'title');
+            //game.add.sprite(0, 642, 'title');
 
             //add a group to hold the ground
             platforms = game.add.group();
@@ -94,10 +94,14 @@
                     fill: '#ff4500',
                 });
             timer = game.time.create();
-            
+
             game.input.onDown.add(startGame, this);
 
-            
+            introText = game.add.text(game.world.centerX, 400, '- Click to Start -', { font: "200px Impact", fill: "#ffffff", align: "center" });
+            introText.anchor.setTo(0.5, 0.5);
+
+            game.input.onDown.add(startGame, this);
+
         }
 
         //Update is continously called while the game is being played - add things like
@@ -181,8 +185,8 @@
             coin.body.bounce.y = 0.7 + Math.random() * 0.2;
         }
         function createMushroom() {
-             //  Here we'll create 3 of them evenly spaced apart
-             for (var i = 0; i < 3; i++) {
+            //  Here we'll create 3 of them evenly spaced apart
+            for (var i = 0; i < 3; i++) {
                 //  Create a mushroom inside of the 'mushrooms' group
                 var mushroom = mushrooms.create(i * 880, 0, 'mushroom');
 
@@ -208,6 +212,9 @@
                 timeUpText.visible = false;
             }
 
+            //don't show intro text
+            introText.visible = false;
+
             //create a loop to update the countdown text, update every second and call updateCountdown
             countdownTimer = timer.loop(Phaser.Timer.SECOND, updateCountdown);
 
@@ -228,17 +235,17 @@
             timer.stop();
 
             //get rid of all the active coins
-            coins.forEach(function(element){
+            coins.forEach(function (element) {
                 element.kill();
             });
-            
+
             //get rid of all the active mushrooms
-            mushrooms.forEach(function(element) {
+            mushrooms.forEach(function (element) {
                 element.kill();
             })
 
             //display time up message
-            timeUpText = game.add.text(420, 250, 'Time\'s up!', { fontSize: '200px', fill: '#ff4500' });
+            timeUpText = game.add.text(420, 250, 'Time\'s up!', { fontSize: '200px', fill: '#ffffff' });
         }
         function updateCountdown() {
 
